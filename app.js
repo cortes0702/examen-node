@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var port = 5000
 var login = require("morgan")
+var hbs = require("hbs")
+var methodOverride = require("method-override")
 
 var indexRouter = require('./routes/index');
 
@@ -13,20 +15,19 @@ var app = express();
 console.log("Este servidor está corriendo en el puerto", port)
 
 //Requerir DB
-require("./db")
+require("./models/db")
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('partials', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+hbs.registerPartials(__dirname + "/views/partials")
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'views')));
-app.use(express.static(path.join(__dirname, 'views/partials')));
+app.use(methodOverride("_method"))
 
 app.use('/', indexRouter);
 
