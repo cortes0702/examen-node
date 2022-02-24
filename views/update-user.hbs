@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Cars</title>
+</head>
+<body>
+    {{> navbar}}
+    <form action="/updated-user/{{usuario_encontrado._id}}?_method=PUT" method="POST" class="form">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="text" name="name" placeholder="Name" value="{{usuario_encontrado.name}}">
+        <input type="text" name="second_name" placeholder="Model" value="{{usuario_encontrado.second_name}}">
+        <input type="text" name="email" placeholder="Url image" value="{{usuario_encontrado.email}}">
+        <input type="text" name="password" placeholder="Url image" value="{{usuario_encontrado.password}}">
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

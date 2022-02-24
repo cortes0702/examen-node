@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Cars</title>
+</head>
+<body>
+    {{> navbar}}
+    <form action="/updated-car/{{coche_encontrado._id}}?_method=PUT" method="POST" class="form">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="text" name="name" placeholder="Name" value="{{coche_encontrado.name}}">
+        <input type="text" name="model" placeholder="Model" value="{{coche_encontrado.model}}">
+        <input type="text" name="image" placeholder="Url image" value="{{coche_encontrado.image}}">
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
